@@ -1,0 +1,31 @@
+{% capture content %}
+<main class="blog">
+    <div class="wide-wrap gradient">
+        <div class="wrap mb">
+            <div class="banner">
+                <h1>{{ title }}</h1>
+                {% for tag in taxonomy.tags %}
+                <h2><a href="{{ tag.url }}">{{ tag.value }}</a></h2>
+                {% endfor %}
+                <p>{{ date | date: "%B %-d, %Y" }}</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="article-wrap">
+        <article class="article-body">
+            {% if meta.intro.value %}
+            {{meta.intro | markdown:true}}
+            {% endif %}
+            {% if meta.vimeo_id.value %}
+            <div class="video">
+                <iframe src="https://player.vimeo.com/video/{{meta.vimeo_id}}?color=33cbd2&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            {% endif %}
+            {{body}}
+            <div class="center mb"><a href="/blog" class="btn mb">← blog</a></div>
+        </article>
+    </section>
+{% endcapture %}
+
+{% include 'layouts/no-main' %}

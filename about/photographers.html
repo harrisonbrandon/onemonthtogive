@@ -1,0 +1,120 @@
+{% capture content %}
+   <div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1>the <span>photographers</span></h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <a href="#filters" class="filter-button">filtering options</a>
+    <div id="filters" class="profile-filters">
+        <div class="filter-type">
+            <h3 class="blue">session type</h3>
+            <ul class="sessions">
+                <li class="filter" data-filter=".all-sessions">all</li>
+                <li class="filter" data-filter=".engagement">engagement</li>
+                <li class="filter" data-filter=".family">family</li>
+                <li class="filter" data-filter=".portrait">portrait</li>
+                <li class="filter" data-filter=".senior">senior</li>
+            </ul>
+        </div>
+        <div class="filter-type">
+            <h3 class="green">price</h3>
+            <ul class="prices">
+                <li class="filter" data-filter=".price-1">$</li>
+                <li class="filter" data-filter=".price-2">$</li>
+                <li class="filter" data-filter=".price-3">$</li>
+            </ul>
+        </div>
+        <div class="filter-type">
+            <h3>location</h3>
+            <ul class="states">
+                <!--<li class="filter" data-filter=".all-states">z</li>
+                <li class="filter" data-filter=".al">B</li>
+                <li class="filter" data-filter=".ca">E</li>
+                <li class="filter" data-filter=".fl">I</li>
+                <li class="filter" data-filter=".ga">J</li>
+                <li class="filter" data-filter=".il">N</li>-->
+                <li class="filter" data-filter=".mn">W</li>
+                <!--<li class="filter" data-filter=".pa">l</li>-->
+                <li class="filter" data-filter=".tn">p</li>
+                <!--<li class="filter" data-filter=".tx">q</li>
+                <li class="filter" data-filter=".va">s</li>
+                <li class="filter" data-filter=".wi">v</li>-->
+            </ul>
+        </div>
+        <a href="#" class="btn gray" id="reset">clear</a>
+    </div>
+    
+    <div class="wrap horizontal-bar"></div>
+
+    <ul id="profile-gallery">
+        {% assign sorted_posts = posts | sort:"title" %}
+        {% for post in sorted_posts %}
+        <li class="mix all-sessions all-states {% for tag in post.taxonomy['sessions'] %}{{ tag.value | append: ' ' }}{% endfor %} {{post.meta.state_abbrev | downcase}} {{post.meta.price_key | replace:'$$$','price-3' | replace:'$$','price-2' | replace:'$','price-1'}}">
+            <div class="profile-details">
+                <div class="profile-details_state">
+                    <p>{{ post.meta.state_key }}</p>
+                </div>
+                <div class="profile-details_price">
+                    <p>{{ post.meta.price_key }}</p>
+                </div>
+                <div class="profile-details_name">
+                    <h4>{{ post.title }}</h4>
+                    <p>{% for tag in post.taxonomy['sessions'] %}{% if forloop.last == true %}{{ tag.value }}{% else %}{{ tag.value | append: ', ' }}{% endif %}{% endfor %}</p>
+                </div>
+            </div>
+            <a href="#{{post.title | remove:' ' | downcase}}" class="profile-btn">view profile</a>
+            {% for asset in post.assets %}
+            <img class="lazyload" data-src="{{asset.url}}" src="/assets/preloader.GIF" alt="{{ post.title }}'s photo">
+            {% endfor %}
+        </li>
+        <div class="remodal" data-remodal-id="{{post.title | remove:' ' | downcase}}">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <section class="profile-modal">
+                <div class="profile-modal_left">
+                    {% for asset in post.assets %}
+                    <img class="lazyload" data-src="{{asset.url}}" src="/assets/preloader.GIF" alt="{{ post.title }}'s photo">
+                    {% endfor %}
+                    <div class="profile-modal-info">
+                        <div class="social">
+                            {% if post.meta.twitter_username %}
+                            <a href="http://www.twitter.com/{{ post.meta.twitter_username | remove:'http://' | remove:'https://' | remove:'www.' | remove:'@'}}" target="_blank"><img src="/assets/twitter-blue.svg" alt="twitter link"></a>
+                            {% endif %}
+                            {% if post.meta.facebook_url %}
+                            <a href="http://www.{{ post.meta.facebook_url | remove:'http://' | remove:'https://' | remove:'www.'}}" target="_blank"><img src="/assets/facebook-blue.svg" alt="facebook link"></a>
+                            {% endif %}
+                            {% if post.meta.instagram_username %}
+                            <a href="http://www.instagram.com/{{ post.meta.instagram_username | remove:'http://' | remove:'https://' | remove:'www.' | remove:'@'}}" target="_blank"><img src="/assets/instagram-blue.svg" alt="instagram link"></a>
+                            {% endif %}
+                            {% if post.meta.email %}
+                            <a href="mailto:{{ post.meta.email}}" target="_blank"><img src="/assets/email-blue.svg" alt="email link"></a>
+                            {% endif %}
+                        </div>
+                        {% if post.meta.website_url %}
+                        <p class="url"><a href="http://www.{{ post.meta.website_url | remove:'http://' | remove:'https://' | remove:'www.'}}" target="_blank">{{ post.meta.website_url | remove:'http://www.'}}</a></p>
+                        {% endif %}
+                        {% if post.meta.phone %}
+                        <p class="phone"><a href="tel:+{{ post.meta.phone | remove:'.' | remove:'-'}}">{{ post.meta.phone }}</a></p>
+                        {% endif %}
+                    </div>
+                    <p class="state"><span>{{ post.meta.state_key }}</span>{{ post.meta.state_name }}</p>
+                </div>
+                <div class="profile-modal_right">
+                    <div class="profile-modal_name">
+                        <h2>{{ post.title }}</h2>
+                        <p class="session-type">{% for tag in post.taxonomy['sessions'] %}{% if forloop.last == true %}{{ tag.value }}{% else %}{{ tag.value | append: ', ' }}{% endif %}{% endfor %}</p>
+                        <a href="https://plasso.co/s/0mcvyIdfJC?price={{ post.meta.price }}" class="btn price" target="_blank">${{ post.meta.price | remove:'$' }}</a>
+                    </div>
+                    {{ post.body }}
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+{% endcapture %}
+
+{% include 'layouts/default' %}

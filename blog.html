@@ -1,0 +1,35 @@
+{% capture content %}
+<div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1><a href="{{ page.url }}"><span>blog</span></a></h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <!-- for filtered views only <header><h2 class="divider">stories</h2></header>-->
+    {% assign sorted_posts = posts | sort:"date" | reverse %}
+    <section class="blog_list">
+    {% for post in sorted_posts %}
+        <article class="blog_entry">
+            {% for asset in post.assets %}
+            <a href="{{ post.url }}"><span class="blog_entry-photo">{% if asset.filename contains "thumb" %}<img src="{{ asset.url }}">{% endif %}{% endfor %}</span></a>
+            <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+            {% if post.meta.intro.value %}
+            {% assign excerpt = {{post.meta.intro.value}} | truncate: 120, '' %}
+            <p>{{ excerpt }}...</p>
+            {% else %}
+            {% assign excerpt = {{post.body}} | truncate: 120, '' %}
+            <p>{{ excerpt }}...</p>
+            {% endif %}
+            {% for tag in post.taxonomy.tags %}
+            <h2><a href="{{ tag.url }}" class="category-link">{{ tag.value }}</a></h2>
+            {% endfor %}
+        </article>
+    {% endfor %}
+    </section>
+</div>
+{% endcapture %}
+
+{% include 'layouts/default' %}

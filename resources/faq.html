@@ -1,0 +1,20 @@
+{% capture content %}
+<div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1>frequently asked <span>questions</span></h1>
+        </div>
+    </div>
+</div>
+
+<section class="wrap faq">
+    <div class="column-left">
+        {{meta.faq_left | markdown:true}}
+    </div>
+    <div class="column-right">
+        {{meta.faq_right | markdown:true}}
+    </div>
+</section>
+{% endcapture %}
+
+{% include 'layouts/default' %}

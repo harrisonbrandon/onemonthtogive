@@ -1,0 +1,9 @@
+.DS_Store
+.brackets.json
+*.codekit
+.siteleafignore
+config.ru
+*.ico
+*.png
+*.json
+*.xml

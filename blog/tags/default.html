@@ -1,0 +1,45 @@
+{% capture custom_banner %}
+<style>
+main>.wide-wrap:first-of-type {background: url("/assets/banner_blog-small.jpg") no-repeat;}
+@media (min-width: 900px) {main>.wide-wrap:first-of-type {background: url("/assets/banner_blog-large.jpg") no-repeat; background-size: cover; background-position: center;} }
+</style>
+{% endcapture %}
+
+
+{% capture content %}
+<div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1><a href="/blog"><span>blog</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;{{ value }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    {% assign sorted_posts = posts | sort:"tag" | sort:"date" %}
+    <section class="blog_list">
+        {% for post in sorted_posts %}
+        <article class="blog_entry">
+            {% for asset in post.assets %}
+            <a href="{{ post.url }}"><span class="blog_entry-photo">{% if asset.filename contains "thumb" %}<img src="{{ asset.url }}">{% endif %}{% endfor %}</span></a>
+            <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+            {% if post.meta.intro.value %}
+            {% assign excerpt = {{post.meta.intro.value}} | truncate: 120, '' %}
+            <p>{{ excerpt }}...</p>
+            {% else %}
+            {% assign excerpt = {{post.body}} | truncate: 120, '' %}
+            <p>{{ excerpt }}...</p>
+            {% endif %}
+            {% for tag in taxonomy.tags %}
+            <h2><a href="{{ tag.url }}" class="category-link">{{ tag.value }}</a></h2>
+            {% endfor %}
+        </article>
+        {% endfor %}
+    </section>
+    <div class="center"><a href="/blog" class="btn mb">← all posts</a></div>
+</div>
+{% endcapture %}
+
+{% include 'layouts/default' %}
+
+

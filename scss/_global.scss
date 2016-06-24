@@ -1,0 +1,239 @@
+// HTML Elements
+@-webkit-viewport {width:device-width}
+@-moz-viewport {width:device-width}
+@-ms-viewport {width:device-width}
+@-o-viewport {width:device-width}
+@viewport {width:device-width}
+.preload header * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+}
+body {
+    padding: 0 $small-padding;
+    @include bp(small) {
+        padding: 0 $small-padding*2;
+    }
+    @include bp(x-large) {
+        padding: 0;
+    }
+}
+img, video, canvas {
+    display: block;
+    height: auto;
+    margin-bottom: $margin-bottom/4;
+    max-width: 100%;
+}
+figure, ol {
+    margin: 0;
+    padding: 0;
+}
+::selection {
+    background: #ececec;
+}
+::-moz-selection {
+    background: #ececec;
+}
+
+
+// Classes
+.center {
+    margin: auto;
+    text-align: center;
+}
+.mb {
+    display: block;
+    @include margin-bottom;
+}
+.mb2 {
+    display: block;
+    margin-bottom: $margin-bottom/2;
+}
+.blue {
+    color: $blue;    
+}
+.green {
+    color: $green;
+}
+.gray {
+    color: $gray;
+}
+.light-gray {
+    color: lighten($gray, 25%);
+}
+.white {
+    background: none;
+    color: white;
+}
+.column-left, .column-right {
+    h3 {
+        color: $blue;
+        @include colfax-regular;
+    }
+    p {
+        @include margin-bottom2;
+    }
+    p + p {
+        @include bp(medium) {
+            margin-top: -$margin-bottom/4;
+        }
+    }
+}
+.column-left {
+    @include column-left;
+}
+.column-right {
+    @include column-right;
+}
+
+
+// Wraps
+.wide-wrap {
+    margin-left: -$small-padding;
+    padding: 0 $small-padding;
+    width: 100%;
+    @include bp(small) {
+        margin-left: -$small-padding*2;
+        padding: 0 $small-padding*2;
+    }
+    @include bp(x-large) {
+        margin: 0;
+        padding: 0;
+    }
+    > .wrap {
+        @include vertical-pad;
+    }
+    &.gray {
+        background: $light-gray;
+    }
+    &.gradient {
+        background: #33cbd2; /* Old browsers */
+        background: -moz-linear-gradient(left,  #33cbd2 0%, #96d42c 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,#33cbd2), color-stop(100%,#96d42c)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  #33cbd2 0%,#96d42c 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  #33cbd2 0%,#96d42c 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  #33cbd2 0%,#96d42c 100%); /* IE10+ */
+        background: linear-gradient(to right,  #33cbd2 0%,#96d42c 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33cbd2', endColorstr='#96d42c',GradientType=1 ); /* IE6-9 */
+    }
+}
+.wrap {
+    @include container;
+    @include bp(xx-large) {
+        @include container(1360px);
+    }
+}
+
+
+// Buttons
+a.btn {
+    border: 3px solid $blue;
+    border-radius: $border-radius;
+    color: $blue;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: $margin-bottom/4;
+    padding: $small-padding/2;
+    text-decoration: none;
+    @include transition;
+    @include colfax-medium;
+    @include bp(small) {
+        font-size: 22px;
+    }
+    @include bp(medium) {
+        font-size: 24px;
+    }
+    @include bp(large) {
+        border: 4px solid $blue;
+        font-size: 26px;
+    }
+    &:hover {
+        background: $blue;
+        color: white;
+    }
+    &.green {
+        border: 3px solid $green;
+        color: $green;
+        @include bp(medium) {
+            border: 4px solid $green;
+        }
+        &:hover {
+            background: $green;
+            color: white;
+        }
+    }
+    &.gray {
+        border: 3px solid $gray;
+        color: $gray;
+        @include bp(medium) {
+            border: 4px solid $gray;
+        }
+        &:hover {
+            background: $gray;
+            color: white;
+        }
+    }
+    &.light-gray {
+        border: 3px solid lighten($gray, 25%);
+        color: lighten($gray, 25%);
+        @include bp(medium) {
+            border: 4px solid lighten($gray, 25%);
+        }
+        &:hover {
+            background: lighten($gray, 25%);
+            color: white;
+        }
+    }
+    &.white {
+        border: 3px solid white;
+        color: white;
+        @include bp(medium) {
+            border: 4px solid white;
+            font-size: 26px;
+        }
+        &:hover {
+            background: white;
+            color: $blue;
+        }
+    }
+    &.white-fill {
+        @extend .white;
+        background: white;
+        border: 3px solid white;
+        color: $blue;
+        @include bp(medium) {
+            border: 4px solid white;
+            font-size: 26px;
+        }
+        &:hover {
+            background: none;
+            color: $blue;
+        }
+    }
+    &.donate {
+        border-color: $green;
+        background: $green;
+        color: white;
+        font-size: 26px;
+        pointer-events: all;
+        @include margin-bottom2;
+        @include bp(small) {
+            font-size: 36px;
+        }
+        &:hover {
+            background: white;
+            border-color: white;
+            color: $green;
+        }
+    }
+}
+.btn-wide {
+    @include btn;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+}
+.btn {
+    @extend a.btn;
+}

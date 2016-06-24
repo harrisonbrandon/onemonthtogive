@@ -1,0 +1,202 @@
+ul, li, p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    line-height: 1em;;
+    @include colfax-regular;
+    @include bp(x-small) {
+        font-size: 48px;
+        line-height: 1.2em;
+    }
+    @include bp(medium){
+        font-size: 60px;
+    }
+    span {
+        @include colfax-medium;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        @include transition;
+        &:hover {
+            color: rgba(255,255,255,.75);
+        }
+    }
+}
+header {
+    text-align: center;
+    position: relative;
+}
+h2 {
+    background: white;
+    color: $gray;
+    font-size: 32px;
+    padding: 0 $small-padding/2;
+    text-align: center;
+    @include colfax-medium;
+    @include margin-bottom2;
+    @include bp(x-small) {
+        font-size: 36px;
+    }
+    @include bp(small) {
+        font-size: 40px;
+        padding: 0 $small-padding;
+    }
+    @include bp(medium){
+        font-size: 44px;
+    }
+    @include bp(large){
+        font-size: 48px;
+    }
+}
+h2.divider {
+    display: inline-block;
+    &:after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        display: block;
+        left: 0;
+        right: 0;
+        top: 16px;
+        border-bottom: 4px solid $gray;
+        z-index: -10;
+        @include bp(medium) {
+            top: 24px;
+        }
+    }
+}
+h2.divider.blue:after {
+    border-bottom: 4px solid $blue;
+}
+h3 {
+    color: $gray;
+    font-size: 24px;
+    line-height: 1em;
+    margin-bottom: .25em;
+    @include colfax-medium;
+    @include bp(small) {
+        font-size: 30px;
+    }
+    @include bp(medium){
+        font-size: 32px;
+    }
+    @include bp(large){
+        font-size: 36px;
+    }
+    a {
+        color: $blue;
+        text-decoration: none;
+        @include transition;
+        &:hover {
+            color: $gray;
+        }
+    }
+}
+h4 {
+    color: white;
+    font-size: 20px;
+    line-height: 1em;
+    margin-bottom: .25em;
+    @include colfax-medium;
+    @include bp(small) {
+        font-size: 24px;
+    }
+    @include bp(large){
+        font-size: 28px;
+    }
+}
+.thin {
+    @include colfax-regular;
+}
+    
+p {
+    font-family: "Georgia", serif;
+    font-weight: normal;
+    color: $gray;
+    font-size: 18px;
+    line-height: 1.4em;
+    @include bp(medium) {
+        font-size: 22px;
+    }
+    a {
+        color: inherit;
+        text-decoration: underline;
+        @include transition;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.bullet-list li {
+    font-family: "Georgia", serif;
+    font-weight: normal;
+    color: $gray;
+    font-size: 18px;
+    line-height: 1.4em;
+    list-style: circle;
+    @include bp(medium) {
+        font-size: 22px;
+    }
+}
+
+blockquote p {
+    color: $blue;
+    display: block;
+    font-size: 22px;
+    line-height: 1.2em;
+    margin: 0 auto;
+    text-align: center;
+    @include colfax-regular;
+    @include margin-bottom2;
+    @include bp(x-small) {
+        width: 75%;
+    }
+    @include bp(small) {
+        font-size: 26px;
+    }
+    @include bp(medium) {
+        font-size: 30px;
+    }
+    @include bp(large) {
+        font-size: 34px;
+    }
+}
+
+.callout {
+    display: block;
+    font-size: 22px;
+    line-height: 1.2em;
+    margin: 0 auto;
+    text-align: center;
+    @include colfax-regular;
+    @include bp(x-small) {
+        width: 65%;
+    }
+    @include bp(small) {
+        font-size: 26px;
+    }
+    @include bp(medium) {
+        font-size: 30px;
+    }
+    @include bp(large) {
+        font-size: 34px;
+    }
+}
+.callout-small {
+    display: block;
+    margin: auto;
+    text-align: center;
+    @include bp(x-small) {
+        width: 65%;
+    }
+}

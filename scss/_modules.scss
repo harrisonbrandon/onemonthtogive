@@ -1,0 +1,298 @@
+// Donate
+.donate-buttons {
+    @include cf;
+    @include bp(small) {
+        margin: auto;
+        width: 65%;
+    }
+    a {
+        cursor: pointer;
+        width: 30%;
+        @include bp(x-small) {
+            margin-bottom: 1%!important;
+        }
+        @include bp(small) {
+            margin: 1%;
+            margin-bottom: 2%!important;
+            width: 15%;
+        }
+        &:nth-of-type(odd) {
+            margin-right: 1%;
+        }
+        &:nth-of-type(even) {
+            margin-left: 1%;
+        }
+        &:nth-of-type(4), &:nth-of-type(last) {
+            @include bp(small) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.donate-big {
+    @extend .btn;
+    border-color: $green!important;
+    background: $green;
+    color: white;
+    cursor: pointer;
+    font-size: 26px;
+    pointer-events: all;
+    @include margin-bottom2;
+    @include bp(small) {
+        font-size: 36px;
+    }
+    &:hover {
+        background: $gray;
+        border-color: $gray!important;
+    }
+}
+
+
+// Triple item features
+.triple-threat {
+    @include cf;
+}
+.triple-threat_item {
+    text-align: center;
+    @include margin-bottom;
+    @include bp(x-small) {
+        @include gallery(3 of 6);
+        &:nth-of-type(3) {
+            margin-left: span(1.65);
+        }
+    }
+    @include bp(medium) {
+        @include gallery(2 of 6);
+        &:nth-of-type(3) {
+            margin-left: gutter;
+        }
+    }
+    img {
+        margin-left: auto;
+        margin-right: auto;
+        @include transition;
+        &:hover {
+            opacity: .5;
+        }
+    }
+}
+
+
+// Gallery - 3
+.gallery-3 {
+    @include cf;
+    @include margin-bottom;
+    img {
+        margin-bottom: 0;
+    }
+    li {
+        position: relative;
+        margin-bottom: gutter(8);
+        @include gallery (3 of 6);
+        @include bp(x-small) {
+            @include gallery (3 of 9);
+        }
+    }
+    // to hide mix elements
+    .mix{
+        display: none;
+    }
+}
+
+
+// Gallery - 4
+.gallery-4 {
+    @include cf;
+    @include margin-bottom;
+    img {
+        margin-bottom: 0;
+    }
+    li {
+        position: relative;
+        margin-bottom: gutter(8);
+        @include gallery (3 of 6);
+        @include bp(x-small) {
+            @include gallery (3 of 9);
+        }
+        @include bp(large) {
+            @include gallery (2 of 8);
+        }
+    }
+    // to hide mix elements
+    .mix{
+        display: none;
+    }
+}
+
+
+// Steps
+.steps {
+    counter-reset: steps-counter;
+    li {
+        @include cf;
+        @include margin-bottom2;
+        @include transition;
+        &:before {
+            color: $blue;
+            content: counter(steps-counter);
+            counter-increment: steps-counter;
+            display: block;
+            float: left;
+            font-size: 70px;
+            margin-top: -10px;
+            @include colfax-medium;
+            @include transition;
+            @include bp(medium) {
+                font-size: 100px;
+                margin-top: -18px;
+            }
+            @include bp(large) {
+                font-size: 140px;
+                margin-top: -30px;
+            }
+        }
+        > a {
+            cursor: pointer;
+            text-decoration: none;
+            h3 {
+                text-decoration: underline;
+            }
+        }
+        h3 {
+            @include transition;
+            a {
+                color: $gray;
+            }
+        }
+        p {
+            @include transition;
+        }
+        h3, p {
+            display: block;
+            margin-left: 60px;
+            @include bp(medium) {
+                margin-left: 80px;
+            }
+            @include bp(large) {
+                margin-left: 110px;
+            }
+        }
+    }
+}
+
+.steps li.cleats,
+.steps li.balls,
+.steps li.shorts {
+    position: relative;
+    @include bp(x-small) {
+        margin-bottom: 30px;
+    }
+    @include bp(small) {
+        margin-bottom: 50px;
+    }
+    @include bp(medium) {
+        margin-bottom: 75px;
+    }
+}
+
+.steps li.cleats:before {
+    background: url(/assets/soccer-cleat.svg) no-repeat;
+    content: '';
+    position: absolute;
+    height: 67px;
+    left: -34px;
+    width: 87px;
+    @include bp(medium) {
+        height: 100px;
+        left: -20px;
+        top: 33px;
+    }
+    @include bp(large) {
+        height: 140px;
+        left: -5px;
+    }
+}
+.steps li.balls:before {
+    background: url(/assets/soccer-ball.svg) no-repeat;
+    content: '';
+    position: absolute;
+    height: 78px;
+    left: -34px;
+    width: 78px;
+    @include bp(medium) {
+        left: -20px;
+        top: 39px;
+    }
+    @include bp(large) {
+        left: 0;
+    }
+}
+.steps li.shorts:before {
+    background: url(/assets/shorts.svg) no-repeat;
+    content: '';
+    position: absolute;
+    height: 65px;
+    left: -34px;
+    top: 10px;
+    width: 78px;
+    @include bp(small) {
+        top: 20px;
+    }
+    @include bp(medium) {
+        left: -20px;
+        top: 39px;
+    }
+    @include bp(large) {
+        left: 0;
+    }
+}
+
+.steps li:hover h3,
+.steps li:hover p {
+    @include bp(large) {
+        margin-left: 115px;
+    }
+}
+.steps li:hover a h3,
+.steps li:hover a p {
+    color: $blue;
+    text-decoration: none;
+}
+.steps li:hover:before {
+    @include bp(large) {
+        margin-left: -5px;
+    }
+}
+
+.steps-left {
+    @include column-left;
+}
+.steps-right {
+    @include column-right;
+    li:last-of-type {
+        background: $light-gray;
+        border-radius: $border-radius;
+        cursor: auto!important;
+        padding: $small-padding;
+        @include margin-bottom;
+        @include bp(medium) {
+            margin-top: -$small-padding;
+        }
+        &:before {
+            content: "";
+            width: 0;
+        }
+        h3, p {
+            margin-left: 0;
+        }
+    }
+}
+.steps-right li:last-of-type:hover {
+    h3, p {
+        color: $gray;
+    }
+    h3 a {
+        color: $gray;
+        margin-left: 0;
+    }
+}

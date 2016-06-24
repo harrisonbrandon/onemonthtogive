@@ -1,0 +1,48 @@
+    <div class="wide-wrap gray">
+        <div class="wrap">
+            <p class="callout">One Month to Give is a 501c3 non-profit sparking philanthropy through photography.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wide-wrap gradient">
+            <div class="wrap">
+                <div class="footer-left">
+                    <a href="donate" class="btn white-fill">donate</a>
+                </div>
+                <div class="footer-center">
+                    <img src="/assets/oneMonth-white_logo.svg" class="logo" alt="One Month to Give logo">
+                </div>
+                <div class="footer-right">
+                    <a href="{{ site.meta.twitter_url }}" target="_blank"><img src="/assets/twitter.svg" alt="twitter link"></a>
+                    <a href="{{ site.meta.facebook_url }}" target="_blank"><img src="/assets/facebook.svg" alt="facebook link"></a>
+                    <a href="{{ site.meta.instagram_url }}" target="_blank"><img src="/assets/instagram.svg" alt="instagram link"></a>
+                </div>
+            </div>
+            <div class="wrap">
+                <p><a href="mailto:{{ site.meta.email }}">{{ site.meta.email }}</a><span class="footer-brandon">Handcrafted with&nbsp;&nbsp;<a href="http://www.harrisonbrandon.com" target="_blank">❤</a></span></p>
+            </div>
+        </div>
+    </footer>
+    
+    {{ footer_scripts }}
+   
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                     function () {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-66090335-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+</html>

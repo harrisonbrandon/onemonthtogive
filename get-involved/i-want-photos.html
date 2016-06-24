@@ -1,0 +1,45 @@
+{% capture content %}
+<div class="wide-wrap gradient">
+<div class="wrap mb">
+    <div class="banner">
+        <h1>smile. it can <span>make a difference.</span></h1>
+    </div>
+</div>
+</div>
+
+<div class="wrap mb">
+    <p class="callout blue">This October, have your photo taken and help us feed, clothe, and inspire 1,000 kids in Haiti. It only takes three simple steps:</p> 
+</div>
+
+<section class="wrap">
+    <header><h2 class="divider">3 simple steps</h2></header>
+    <div class="steps">
+        <ol class="steps-left">
+            <li><a href="/about/photographers">
+                <h3>find a photographer</h3>
+                <p>View our community of photographers and find one that fits you.</p></a>
+            </li>
+            <li>
+                <h3>book a session</h3>
+                <p>Contact your favorite photographer and schedule a session for October.</p>
+            </li>
+        </ol>
+        <ol class="steps-right">
+            <li><a href="{{ site.meta.celebration-event }}" target="_blank">
+                <h3>donate &amp; celebrate</h3>
+                <p>Donate through your photographer's profile and RSVP to our celebration event.</p></a>
+            </li>
+            <li>
+                <h3>questions? <span class="thin"><a href="/resources/faq" class="faq-link">read our FAQ</a></span></h3>
+                <p>If you can’t find what you’re looking for, give us a shout on <a href="{{ site.meta.facebook_url }}" target="_blank">Facebook</a>, <a href="{{ site.meta.twitter_url }}" target="_blank">Twitter</a>, or via <a href="mailto:{{ site.meta.email }}">email</a>.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+{% include 'includes/quote' %}
+
+{% include 'includes/photographers-feature' %}
+{% endcapture %}
+
+{% include 'layouts/default' %}

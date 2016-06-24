@@ -1,0 +1,18 @@
+// Variables //
+$susy: (
+    columns: 6,
+    gutters: .2,
+    container: 1140px,
+    global-box-sizing: border-box,
+    debug: (image: hide)
+);
+
+$gray: rgb(125,125,125);
+$light-gray: rgba(125,125,125,.15);
+$blue: #33cbd2;
+$green: #96d42c;
+
+$small-padding: 20px;
+$margin-bottom: 65px;
+
+$border-radius: 12px;

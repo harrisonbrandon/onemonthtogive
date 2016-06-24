@@ -1,0 +1,306 @@
+// Header
+.site-header {
+    //background: white;
+    padding: $small-padding 0;
+}
+.logo {
+    height: auto;
+    width: 150px;
+    @include bp(small) {
+        width: 200px;
+    }
+    header & {
+        float: left;
+        margin-bottom: 0;
+    }
+}
+
+
+/*a.menu-link {
+    @extend .btn;
+    display: block;
+    float: right; 
+    padding: 1em;
+    @include bp(medium) {
+        display: none!important;
+    }
+}*/
+
+$color: $blue;
+
+$height-icon: 25px;
+$width-line: 40px;
+$height-line: 6px;
+
+$transition-time: 0.4s;
+$rotation: 45deg;
+$translateY: ($height-icon / 2);
+$translateX: 0;
+
+.menu-link {
+    width:$width-line;
+    float: right;
+    height:$height-icon;
+    position:relative;
+    display:block;
+    margin: 25px 5px 0 0;
+    @include bp(small) {
+        margin-top: 35px;
+    }
+    @include bp(medium) {
+        display: none!important;
+    }
+
+    .line {
+        display:block;
+        background:$color;
+        width:$width-line;
+        height:$height-line;
+        position:absolute;
+        left:0;
+        transition: all $transition-time;
+        -webkit-transition: all $transition-time;
+        -moz-transition: all $transition-time;
+
+        &.line-1 {
+            top:0;
+        }
+        &.line-2 {
+            top:50%;
+        }
+        &.line-3 {
+            top:100%;
+        }
+    }
+    &.active {
+        .line-1 {
+            background: lighten($gray,35%);
+            transform: translateY($translateY) translateX($translateX) rotate($rotation);
+            -webkit-transform: translateY($translateY) translateX($translateX) rotate($rotation);
+            -moz-transform: translateY($translateY) translateX($translateX) rotate($rotation);
+        }
+        .line-2 {
+            opacity:0;
+        }
+        .line-3 {
+            background: lighten($gray,35%);
+            transform: translateY($translateY * -1) translateX($translateX) rotate($rotation * -1);
+            -webkit-transform: translateY($translateY * -1) translateX($translateX) rotate($rotation * -1);
+            -moz-transform: translateY($translateY * -1) translateX($translateX) rotate($rotation * -1);
+        }
+    }
+}
+
+
+.menu, .menu > ul ul {
+    clear: both;
+    transition: all 0.3s ease-out;
+}
+//.preload .menu > ul ul {
+//    display: none;
+//}
+.menu {
+    overflow: hidden;
+    max-height: 0;
+    @include bp(medium) {
+        max-height: none;
+        overflow: visible;
+    }
+}
+.js .menu {
+    //overflow: hidden;
+    //max-height: 0;
+    @include bp(medium){
+        max-height: none;
+        overflow: visible;
+        background: none;
+    }
+    & > ul ul {
+        overflow: hidden;
+        max-height: 0;
+        @include bp(medium) {
+            //display: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            margin: 0 auto;
+            padding: auto 0;
+            max-height: none;
+            overflow: visible;
+            z-index: 1;
+            @include transition;
+        }
+    }
+    & > ul li:hover > ul {
+        //display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.menu.active, .js .menu > ul ul.active {
+    max-height: 55em;
+}
+.menu {
+    width: 100%;
+    @include bp(medium) {
+        clear: none;
+        display: inline-block;
+        float: right;
+        margin: 30px 0 0;
+        padding: 0!important;
+        text-align: right;
+        width: auto;
+    }
+    a {
+        color: $blue;
+        font-size: 24px;
+        @include colfax-medium;
+        text-decoration: none;
+        @include transition;
+        &.donate {
+            color: $green;
+            z-index: 3;
+            @include bp(medium) {
+                border: 4px solid $green;
+                border-radius: $border-radius;
+                @include transition;
+                &:hover {
+                    background: $green;
+                    color: white;
+                }
+            }
+        }
+    }
+    li a {
+        border-bottom: 1px solid $blue;
+        display: block;
+        padding: $small-padding/2;
+        position: relative;
+        z-index: 2;
+        @include bp(medium) {
+            border: 0;
+        }
+        &:hover {
+            @include bp(medium) {
+                color: $gray;
+            }
+        }
+    }
+    ul {
+        @include bp(medium) {
+            margin: 0 0 0 -0.25em;
+            border: 0!important;
+        }
+    }
+    & > ul {
+        border-top: 1px solid $blue;
+        @include bp(medium) {
+            text-align: left;
+            ul {
+                background: white;
+                border-radius: $border-radius;
+                position: absolute;
+                top: 0;
+                //left: 12em;
+                min-width: 12em;
+            }
+            ul li {
+                //display: inline;
+                position: relative;
+            }
+            ul.level-2 {
+                top: 34px;
+                left: -11px;
+            }
+        }
+        & > li {
+            @include bp(medium) {
+                display: inline-block;
+                margin-left: $small-padding/4;
+                position: relative;
+            }
+            @include bp(large) {
+                margin-left: $small-padding;
+            }
+            @include bp(x-large) {
+                margin-left: $small-padding*2;
+            }
+            @include bp(xx-large) {
+                margin-left: $small-padding*3;
+            }
+        }
+    }
+    .level-1 {
+        margin-top: $margin-bottom/4;
+        @include bp(small) {
+            margin-top: $margin-bottom/2;
+        }
+        @include bp(medium) {
+            margin-top: 0;
+        }
+    }
+    .level-1 > li.has-subnav > a:after {
+        @include bp(medium) {
+            content: "";
+        }
+    }
+}
+.menu ul li > ul {
+    @include bp(medium) {
+        display: none;
+    }
+}
+.menu ul li:hover > ul {
+    visibility: visible;
+    @include bp(medium) {
+        display: block;
+    }
+}
+.menu ul.level-2 li a {
+    background: $blue;
+    border-color: white;
+    color: white;
+    font-weight: 400;
+    @include bp(medium) {
+        background: none;
+        border-top: 2px solid $blue;
+        //border-bottom: 2px solid $blue;
+        color: $blue;
+        font-size: 20px;
+        margin: 0;
+        padding: $small-padding;
+    }
+    &:hover {
+        @include bp(medium) {
+            background: $blue;
+            color: white;
+        }
+    }
+}
+.menu ul.level-2 li:first-of-type {
+    @include bp(medium) {
+        padding-top: 52px;
+    }
+}
+.menu ul.level-2 li:last-of-type a {
+    @include bp(medium) {
+        border-radius: 0 0 $border-radius $border-radius;
+    }
+}
+.menu li.has-subnav {
+    & > a:after {
+        content: '+';
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        font-size: 1.5em;
+        padding: 0.15em 0.5em;
+    }
+    & > a.active:after {
+        content: "-";
+        @include bp(medium) {
+            content: "";
+        }
+    }
+}

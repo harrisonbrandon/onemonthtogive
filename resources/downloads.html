@@ -1,0 +1,26 @@
+{% capture content %}
+<div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1><span>downloads</span></h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    {% assign sorted_posts = site.pages['resources'].pages['downloads'].posts | sort:"filename" | reverse %}
+    <ul class="gallery-4">
+        {% for post in sorted_posts %}
+        <li style="border: 1px solid #ccc">
+            {% for asset in post.assets %}
+            {% if asset.filename contains "thumb" %}
+            <a href="{{asset.url | remove:'_thumb'}}" download="{{asset.filename | remove:'_thumb'}}"><img src="{{asset.url}}" alt="{{asset.filename}} instagram graphic"></a>
+            {% endif %}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endcapture %}
+
+{% include 'layouts/default' %}

@@ -1,0 +1,73 @@
+// Footer
+.footer-left {
+    @include span(2);
+}
+.footer-center {
+    display: none;
+    text-align: center;
+    @include bp(x-small) {
+        display: block;
+        @include span(2);
+    }
+    .logo {
+        margin: -10px auto 0;
+        @include bp(small) {
+            margin: -25px auto 0;
+        }
+    }
+}
+.footer-right {
+    text-align: right;
+    @include bp(x-small) {
+        @include span(2);
+        @include last;
+    }
+    img {
+        display: inline;
+        height: auto;
+        margin-right: -5px;
+        width: 60px;
+    }
+}
+footer {
+    .wrap:first-of-type {
+        padding-bottom: $small-padding;
+    }
+    .wrap:last-of-type {
+        padding-top: 0;
+    }
+
+    p {
+        @include colfax-regular;
+        color: white;
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+    a img {
+        color: white;
+        @include transition;
+        &:hover {
+            opacity: .75;
+        }
+    }
+    a.btn {
+        margin: 0;
+        &:hover {
+            background: none;
+            color: white!important;
+        }
+    }
+}
+span.footer-brandon {
+    display: block;
+    @include bp(small) {
+        display: inline;
+    }
+    &:before {
+        @include bp(small) {
+            content: '•';
+            margin: 0 15px;
+        }
+    }
+}

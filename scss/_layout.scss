@@ -1,0 +1,174 @@
+// General
+.banner {
+    padding: 10% 0 0;
+    @include bp(xx-large) {
+        padding-top: 15%;
+    }
+    @include bp(xxx-large) {
+        padding-top: 20%;
+    }
+}
+.infographic {
+    @include margin-bottom2;
+    @include bp(x-small) {
+        @include span(isolate 4 at 2);
+
+    }
+}
+
+.video-center {
+    margin: 0 auto;
+    text-align: center;
+    @include  bp(medium) {
+        width: 65.75%;
+    }
+}
+
+
+// Home
+.home .banner {
+    @include bp(xxx-large) {
+        padding-top: 15%;
+    }
+    h1 {
+        @include bp(medium) {
+            margin-bottom: $margin-bottom/2;
+            padding-right: span(1);
+        }
+        @include bp(x-large) {
+            padding-right: span(3);
+        }
+    }
+    h3 {
+        color: white;
+        & a {
+            border-bottom: 2px solid white;
+            color: white;
+            display: inline-block;
+            pointer-events: all;
+            text-decoration: none;
+            @include transition;
+            &:hover {
+                border-bottom: 2px solid $green;
+                color: $green;
+            }
+        }
+    }
+}
+figure.home-video {
+    pointer-events:none;
+    position: relative;
+    @include cf;
+    @include bp(small) {
+        margin-top: -75px;
+    }
+    @include bp(medium) {
+        margin-top: -100px;
+    }
+    @include bp(large) {
+        margin-top: -150px;
+    }
+    @include bp(x-large) {
+        margin-top: -210px;
+        height: 421px;
+    }
+    @include bp(xx-large) {
+        margin-top: -210px;
+        height: auto;
+    }
+    figcaption {
+        pointer-events: all;
+        @include span(6);
+        @include bp(small) {
+            bottom: 0;
+            position: absolute;
+            @include span(2);
+        }
+    }
+    .video {
+        background: black;
+        pointer-events: all;
+        @include span(6);
+        @include margin-bottom2;
+        @include bp(small) {
+            float: right;
+            margin-bottom: 0;
+            @include span(4);
+            @include last;
+        }
+    }
+}
+.partner-feature {
+    @include margin-bottom;
+}
+.partner-logo {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 350px;
+    @include bp(small) {
+        @include span(2);
+    }
+    img {
+        display: inline-block;
+    }
+}
+.partner-text {
+    @include bp(small) {
+        @include span(isolate 4 at 1)
+    }
+}
+
+
+// donate
+.donate_section {
+    text-align: center;
+    margin-top: $margin-bottom/4;
+    @include bp(medium) {
+        margin-top: $margin-bottom/2;
+    }
+}
+
+
+
+// I want photos
+.profiles-feature {
+    text-align: center;
+    @include margin-bottom2;
+    h2.divider {
+        margin-bottom: -65px;
+    }
+    .btn {
+        @include bp(medium) {
+            margin-top: $margin-bottom/2;
+        }
+    }
+    //#profile-gallery {
+    //    border-top: 0;
+    //    margin-top: 0;
+    //    @include bp(x-small) {
+    //        margin: auto;
+    //        max-width: 65%;
+    //    }
+    //    @include bp(large) {
+    //        max-width: 100%;
+    //    }
+    //    li {
+    //        @include span (3 of 6);
+    //        @include bp(large) {
+    //            @include span (2 of 8);
+    //        }
+    //    }
+    //}
+}
+
+
+// FAQ
+.faq {
+    @include margin-bottom;
+}
+a.faq-link {
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}

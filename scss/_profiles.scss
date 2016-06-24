@@ -1,0 +1,499 @@
+// profiles Filters
+.profile-filters {
+    margin-top: -$margin-bottom/4;
+    @include bp(medium) {
+        margin-top: -$margin-bottom/2;
+    }
+    .filter-type {
+        display: inline;
+        margin-bottom: $margin-bottom/8;
+        @include bp(small) {
+            display: inline-block;
+        }
+        @include bp(medium) {
+            @include cf;
+            margin-bottom: $margin-bottom/4;
+        }
+        &:first-of-type {
+            //width: 100%;
+        }
+        &:nth-of-type(2) {
+            @include bp(medium) {
+                display: inline-block;
+            }
+            @include bp(large) {
+                margin-left: 25px;
+            }
+        }
+        &:last-of-type {
+            display: inline;
+            @include bp(x-small) {
+                margin-top: 0;
+            }
+            @include bp(small) {
+                margin-left: 25px;
+            }
+            @include bp(medium) {
+                display: inline-block;
+                margin-left: 0;
+            }
+        }
+    }
+    h3 {
+        display: none;
+        @include bp(small) {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+    ul {
+        display: inline;
+        margin-top: -10px;
+    }
+    ul.sessions li {
+        @extend a.btn;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 100%;
+        margin: 10px 10px 0 0;
+    }
+    ul.states li {
+        color: lighten($gray, 25%);
+        cursor: pointer;
+        display: inline-block;
+        font-size: 48px;
+        margin: 10px 10px 0 0;
+        font-family: 'StateFaceRegular';
+        vertical-align: bottom;
+        &:hover {
+            color: $gray;
+        }
+    }
+    ul.prices li {
+        color: lighten($green, 25%);
+        cursor: pointer;
+        display: inline-block;
+        font-size: 40px;
+        @include colfax-medium;
+    }
+}
+ul.sessions li.filter.active {
+    background: $blue!important;
+    color: white!important;
+}
+ul.states li.filter.active {
+    color: $gray!important;
+}
+ul.prices li.filter.active {
+    color: $green!important;
+}
+#reset {
+    font-size: 100%;
+    margin: 0 0 0 10px;
+    vertical-align: bottom;
+    @include bp(small) {
+        margin-top: 5px;
+        vertical-align: top;
+    }
+    @include bp(medium) {
+        //margin-top: 0;
+        margin-left: 0;
+    }
+    @include bp(large) {
+        float: right;
+        margin-left: 25px;
+    }
+}
+
+// Filter button for mobile
+.js #filters {
+    display: none;
+    @include bp(x-small) {
+        display: block;
+    }
+}
+#filters {
+    display: block;
+}
+.filter-button {
+    @include btn;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    width: 100%;
+    @include bp(x-small) {
+        display: none!important;
+    }
+}
+
+.horizontal-bar {
+    border-top: 4px solid $gray;
+    margin-top: $margin-bottom/2;
+}
+
+// profiles Gallery
+#profile-gallery {
+    //border-top: 4px solid $gray;
+    @include cf;
+    @include margin-bottom;
+    //margin-top: $margin-bottom/2;
+    margin-left: -2.5%;
+    margin-right: -2.5%;
+    @include bp(x-small) {
+        margin-left: -1.5%;
+        margin-right: -1.5%;
+    }
+    @include bp(large) {
+        margin-left: -1%;
+        margin-right: -1%;
+    }
+    padding-top: $margin-bottom/2;
+    @include bp(medium) {
+        margin-top: $margin-bottom/4;
+        //padding-top: $margin-bottom;
+    }
+    img {
+        margin-bottom: 0;
+    }
+    li {
+        display: inline-block;
+        position: relative;
+        margin: 2.5%;
+        width: 44%;
+        //@include span (3 of 6);
+        @include bp(x-small) {
+            margin: 1.5%;
+            width: 29.8%;
+            //@include span (3 of 9);
+        }
+        @include bp(large) {
+            margin: 1%;
+            width: 22.5%;
+            //@include span (2 of 8);
+        }
+        //*&:nth-of-type(2n) {
+        //    margin-right: 0;
+        //    @include bp(x-small) {
+        //        margin-right: gutter(9);
+        //    }
+        //}
+        //&:nth-of-type(3n) {
+        //    @include bp(x-small) {
+        //        margin-right: 0;
+        //    }
+        //    @include bp(large) {
+        //        margin-right: gutter(9);
+        //    }
+        //}
+        //&:nth-of-type(4n) {
+        //    @include bp(large) {
+        //        margin-right: 0;
+        //    }
+        //}
+
+    }
+    // to hide mix elements
+    .mix{
+        display: none;
+    }
+}
+#profile-gallery li .profile-details {
+    visibility:hidden;
+    opacity:0;
+    @include transition;
+}
+.profile-details_state {
+    display: none;
+    float: left;
+    padding: $small-padding/2;
+    p {
+        font-family: 'StateFaceRegular';
+    }
+}
+.profile-details_price {
+    display: none;
+    float: right;
+    padding: $small-padding/2;
+}
+#profile-gallery li:hover {
+    @include bp(medium) {
+        .profile-details {
+            background: rgba(51,203,210,.85);
+            height: 100%;
+            margin-top: -gutters();
+            padding: -gutters();
+            position: absolute;
+            width: 100%;
+            visibility:visible;
+            opacity:1;
+        }
+        .profile-details_state {
+            display: block;
+        }
+        .profile-details_price {
+            display: block;
+        }
+    }
+}
+.profile-details p, h4 {
+    color: white;
+}
+/*.profile-btn {
+display: block;
+font-size: 18px!important;
+margin: 0 $small-padding 25%;
+position: absolute;
+bottom: $small-padding;
+left: 0;
+right: 0;
+text-align: center;
+@include bp(x-small) {
+margin: 0 $small-padding;
+}
+@include bp(large) {
+margin: 0 $small-padding*2.5;
+} 
+}*/
+.profile-btn {
+    color: transparent;
+    display: inline-block;
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 100%;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include transition;
+    @include colfax-medium;
+    @include bp(medium) {
+        border: 4px solid white;
+        color: white;
+        border-radius: $border-radius;
+        bottom: $small-padding;
+        font-size: 20px;
+        height: auto;
+        margin: 0 $small-padding*2.5;
+        padding: $small-padding/2;
+        text-indent: inherit;
+        width: auto;
+        white-space: normal;
+        &:hover {
+            background: white;
+            color: $blue;
+        }
+        // Hide unless hover
+        visibility:hidden;
+        opacity:0;
+        @include transition;
+        #profile-gallery li:hover & {
+            visibility:visible;
+            opacity:1;
+        } 
+    }  
+}
+.profile-details_name {
+    display: none;
+    @include bp(x-small) {
+        display: block;
+        height: 100px;
+        margin: auto $small-padding;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+    }
+    @include bp(x-small) {
+        margin: 0 $small-padding;
+        top: 20%;
+    }
+    @include bp(large) {
+        top: 5%;
+    }
+    @include bp(xx-large) {
+        top: 20%;
+    }
+    & p {
+        display: none;
+        @include bp(x-large) {
+            display: block;
+        }
+    }
+}
+
+
+// modal styles
+.profile-modal {
+    margin: 0 auto;
+    max-width: 500px;
+    @include bp(small) {
+        max-width: 100%;
+    }
+    h2 {
+        line-height: 1em;
+        margin-bottom: 0;
+        @include bp(small) {
+            padding-left: 0;
+            text-align: left;
+            margin-bottom: $small-padding/4;
+        }
+    }
+    h3 {
+        color: $blue;
+        @include colfax-regular;
+        @include bp(small) {
+            text-align: left;
+        }
+    }
+    p {
+        @include bp(small) {
+            font-size: 20px;
+            text-align: left;
+        }
+        span {
+            font-family: 'StateFaceRegular';
+            margin-right: 10px;
+        }
+    }
+}
+// left side
+.profile-modal_left  {
+    @include word-wrap;
+    @include margin-bottom2;
+    @include bp(small) {
+        margin-bottom: 0;
+        min-height: 525px;
+        @include span(2);
+    }
+    .social {
+        display: block;
+        margin-bottom: 12px;
+        overflow: auto;
+        padding-top: 8px;
+        width: 100%;
+        img {
+            display: inline;
+            height: auto;
+            margin-bottom: 0;
+            width: 50px;
+            @include transition;
+            @include bp(small) {
+                float: left;
+                margin-left: -5px;
+            }
+            @include bp(large) {
+                width: 60px;
+            }
+            &:hover {
+                opacity: .75;
+            }
+        }
+    }
+    > img {
+        margin: 0 auto;
+        max-width: 250px;
+        z-index: auto;
+        @include bp(small) {
+            max-width: 100%;
+        }
+    }
+}
+.profile-modal-info {
+    background: rgba(255,255,255,.85);
+    margin-top: -55px;
+    position: relative;
+    z-index: 1;
+    @include bp(small) {
+        margin-top: 10px;
+    }
+}
+.phone {
+    @include margin-bottom2;
+    a {
+        text-decoration: none;
+    }
+}
+%state {
+    color: $blue;
+    font-family: 'StateFaceRegular';
+    font-size: 28px;
+    margin-right: 10px;
+}
+.state-mn {
+    color: $blue;
+    @include bp(small) {
+        font-size: 26px!important;
+        position: absolute;
+        bottom: $small-padding*2;
+    }
+    &:before {
+        @extend %state;
+        content: 'W';
+    }
+}
+// right side
+.profile-modal_right {
+    @include bp(small) {
+        margin-left: span(2) + 5%;
+    }
+    h3:last-of-type {
+        margin-top: $margin-bottom/2;
+        @include bp(small) {
+            margin-top: $margin-bottom/4;
+        }
+    }
+}
+.profile-modal_name {
+    border-bottom: 3px solid $gray;
+    padding-bottom: $small-padding;
+    position: relative;
+    margin-bottom: $margin-bottom/2;
+    @include bp(small) {
+        padding-right: 170px;
+        margin-bottom: $margin-bottom/4;
+    }
+    @include bp(medium) {
+        padding-right: 180px;
+    }
+    @include bp(large) {
+        border-bottom: 4px solid $gray;
+    }
+}
+a.price {
+    border: 4px solid $green;
+    color: $green;
+    font-size: 48px;
+    line-height: 1em;
+    margin: $margin-bottom/6 auto $margin-bottom/6;
+    //padding-top: 15px;
+    @include colfax-medium;
+    @include bp(small) {
+        font-size: 52px;
+        position: absolute;
+        top: -14px;
+        right: 0;
+    }
+    @include bp(medium) {
+        font-size: 56px;
+        top: -16px;
+    }
+    &:hover {
+        background: $green;
+    }
+}
+p.session-type {
+    font-style: italic;
+    @include margin-bottom2;
+    @include bp(small) {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+}

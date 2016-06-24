@@ -1,0 +1,82 @@
+{% capture content %}
+<div class="wide-wrap gradient">
+    <div class="wrap mb">
+        <div class="banner">
+            <h1>take photos. <span>take action.</span></h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrap mb">
+    <p class="callout blue">This October, your passion for photography could feed, clothe, and inspire 1,000 kids in Haiti. Take action with these simple steps:</p> 
+</div>
+
+<section class="wrap">
+    <header><h2 class="divider">5 simple steps</h2></header>
+    <div class="steps">
+        <ol class="steps-left">
+            <li><a href="https://onemonthtogive.wufoo.com/forms/photographer-signup/">
+                <h3>create a profile</h3>
+                <p>Fill out our form to participate and we’ll feature you on the site.</p></a>
+            </li>
+            <li><a href="https://www.dropbox.com/sh/oxdw41b3y4y7qbr/AADpNJp0hJt88mjmWQz7Xsc6a?dl=0">
+                <h3>get the word out</h3>
+                <p>Download our toolkit and share your passion for giving back on social media.</p></a>
+            </li>
+            <li>
+                <h3>book sessions</h3>
+                <p>Contribute your time and talent to make a difference with your clients.</p>
+            </li>
+        </ol>
+        <ol class="steps-right">
+            <li>
+                <h3>direct donations</h3>
+                <p>Have clients donate their session fee by clicking the price button on your profile.</p>
+            </li>
+            <li><a href="{{ site.meta.celebration-event }}" target="_blank">
+                <h3>celebrate with us</h3>
+                <p>You're a hero! Now RSVP for our celebration event so we can give you a high five!</p></a>
+            </li>
+            <li>
+                <h3>questions? <span class="thin"><a href="/resources/faq" class="faq-link">read our FAQ</a></span></h3>
+                <p>If you can’t find what you’re looking for, give us a shout on <a href="{{ site.meta.facebook_url }}" target="_blank">Facebook</a>, <a href="{{ site.meta.twitter_url }}" target="_blank">Twitter</a>, or via <a href="mailto:{{ site.meta.email }}">email</a>.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+{% include 'includes/quote' %}
+
+<div class="wide-wrap">
+    <div class="wrap profiles-feature">
+        <h2>join the community</h2>
+        <p class="callout-small">We're a community of photographers passionate about giving back. Below are some of the recent heroes donating their time in October:</p>
+        <a href="/about/photographers" class="btn blue">view all</a>
+        {% assign sorted_posts = site.pages['about'].pages['photographers'].posts | sort:"date" | reverse %}
+        <ul id="profile-gallery">
+            {% for post in sorted_posts limit:4 %}
+            <li>
+                <div class="profile-details">
+                    <div class="profile-details_state">
+                        <p>{{ post.meta.state_key }}</p>
+                    </div>
+                    <div class="profile-details_price">
+                        <p>{{ post.meta.price_key }}</p>
+                    </div>
+                    <div class="profile-details_name">
+                        <h4>{{ post.title }}</h4>
+                        <p>{% for tag in post.taxonomy['sessions'] %}{{ tag.value }}, {% endfor %}</p>
+                    </div>
+                </div>
+                <a href="/about/photographers/#{{post.title | remove:' ' | downcase}}" class="profile-btn">view profile</a>
+                {% for asset in post.assets %}
+                <img src="{{asset.url}}" alt="{{ post.title }}'s photo">
+                {% endfor %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endcapture %}
+
+{% include 'layouts/default' %}

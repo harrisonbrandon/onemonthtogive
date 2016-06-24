@@ -1,0 +1,114 @@
+// Media Queries
+@mixin bp($point) {
+    @if $point == x-small {
+        @media (min-width: 680px) { @content; }
+    }
+    @else if $point == small {
+        @media (min-width: 768px) { @content; }
+    }
+    @else if $point == medium {
+        @media (min-width: 900px) { @content; }
+    }
+    @else if $point == large {
+        @media (min-width: 1064px)  { @content; }
+    }
+    @else if $point == x-large {
+        @media (min-width: 1200px)  { @content; }
+    }
+    @else if $point == xx-large {
+        @media (min-width: 1600px)  { @content; }
+    }
+    @else if $point == xxx-large {
+        @media (min-width: 1900px)  { @content; }
+    }
+}
+
+// Typography
+@mixin colfax-regular {
+    font-family:'colfax-web', Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin colfax-medium {
+    font-family:'colfax-web', Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+// Scss. Clearfix Mixin
+@mixin cf {
+  &:after {
+    content: " ";
+    clear: both;
+    display: block;
+  }
+}
+
+// Columns
+@mixin column-left {
+    @include bp(medium) {
+        @include gallery (3 of 6);
+        margin-left: 0;
+    }
+}
+@mixin column-right {
+    @include bp(medium) {
+        @include gallery (3 of 6);
+    }
+}
+
+// Margin
+@mixin margin-bottom {
+    margin-bottom: $margin-bottom/2;
+    @include bp(medium) {
+        margin-bottom: $margin-bottom;
+    }
+}
+@mixin margin-bottom2 {
+    margin-bottom: $margin-bottom/4;
+    @include bp(medium) {
+        margin-bottom: $margin-bottom/2;
+    }
+}
+
+// Padding
+@mixin vertical-pad {
+    padding: $margin-bottom/2 0;
+    @include bp(medium) {
+        padding: $margin-bottom 0;
+    }
+}
+
+// Transition
+@mixin transition {
+    transition: 0.3s ease;
+}
+
+// Word Wrap
+@mixin word-wrap {
+    word-break:     break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens:    auto;
+    hyphens:         auto;
+}
+
+// Button
+@mixin btn {
+    border: 3px solid $blue;
+    border-radius: $border-radius;
+    color: $blue;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: $margin-bottom/4;
+    padding: $small-padding/2;
+    text-decoration: none;
+    @include transition;
+    @include colfax-medium;
+    @include bp(small) {
+        font-size: 22px;
+    }
+    @include bp(medium) {
+        border: 4px solid $blue;
+        font-size: 26px;
+    }
+}

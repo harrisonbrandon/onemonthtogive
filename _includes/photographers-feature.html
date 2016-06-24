@@ -1,0 +1,30 @@
+<div class="wide-wrap">
+    <div class="wrap profiles-feature">
+        <h2>meet the photographers</h2>
+        <p class="callout-small">Every photographer in our community is passionate about giving back. If you're not sure who to partner with, below are some of the latest to join:</p>
+        <a href="/about/photographers" class="btn blue">view all</a>
+        {% assign sorted_posts = site.pages['about'].pages['photographers'].posts | sort:"date" | reverse %}
+        <ul id="profile-gallery">
+            {% for post in sorted_posts limit:4 %}
+            <li>
+                <div class="profile-details">
+                    <div class="profile-details_state">
+                        <p>{{ post.meta.state_key }}</p>
+                    </div>
+                    <div class="profile-details_price">
+                        <p>{{ post.meta.price_key }}</p>
+                    </div>
+                    <div class="profile-details_name">
+                        <h4>{{ post.title }}</h4>
+                        <p>{% for tag in post.taxonomy['sessions'] %}{{ tag.value }}, {% endfor %}</p>
+                    </div>
+                </div>
+                <a href="/about/photographers/#{{post.title | remove:' ' | downcase}}" class="profile-btn">view profile</a>
+                {% for asset in post.assets %}
+                <img src="{{asset.url}}" alt="{{ post.title }}'s photo">
+                {% endfor %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
